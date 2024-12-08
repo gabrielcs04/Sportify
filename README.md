@@ -1,14 +1,13 @@
 # Sportify - Rede Social para Atletas
 
-Bem-vindo ao **Sportify**, uma plataforma de rede social criada para atletas de alto rendimento. O projeto permite que atletas, agências e patrocinadores se conectem, compartilhem suas conquistas, organizem eventos, e gerenciem suas carreiras.
+Bem-vindo ao **Sportify**, uma plataforma de rede social criada para atletas de alto rendimento. O projeto permite que atletas, agências e patrocinadores se conectem, compartilhem suas conquistas, organizem eventos e gerenciem suas carreiras.
 
 Este projeto contém o frontend desenvolvido em React e um backend em Java Spring (configurado separadamente), e está estruturado para funcionar em conjunto com um banco de dados relacional.
 
 ## Índice
 - [Pré-requisitos](#pré-requisitos)
 - [Instalação](#instalação)
-- [Configuração do Backend](#configuração-do-backend)
-- [Iniciando o Projeto](#iniciando-o-projeto)
+- [Build e Execução](#build-e-execução)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Contribuição](#contribuição)
@@ -26,7 +25,7 @@ Antes de começar, você precisará das seguintes ferramentas instaladas em seu 
 
 ## Instalação
 
-Siga os passos abaixo para configurar e executar o projeto localmente.
+Siga os passos abaixo para configurar o projeto localmente.
 
 ### 1. Clone o Repositório
 
@@ -38,54 +37,81 @@ cd sportify
 ```
 
 ### 2. Instale as Dependências
-Para instalar todas as dependências listadas no package.json, execute:
+Para instalar todas as dependências do frontend, execute:
 
 ```bash
+cd sportify-frontend
 npm install
 ```
 
-Isso abrirá o projeto em modo de desenvolvimento em seu navegador, acessível em http://localhost:3000
+Para instalar todas as dependências do backend, execute:
 
-### 3. Possíveis Problemas
+```bash
+cd ../sportify-backend
+mvn clean install
+```
 
-- Erro de Conexão: Certifique-se de que o backend está rodando e acessível em http://localhost:8080.
+---
 
-- Porta em Uso: Se a porta 3000 já estiver em uso, execute o React em outra porta:
-PORT=3001 npm start
+## Build e Execução
 
-  - No Windows, use set PORT=3001 && npm start.
+Após instalar as dependências, siga as instruções abaixo para buildar e executar o projeto.
 
+### Frontend
 
-### 5. Funcionalidades Principais:
+No diretório do frontend (`sportify-frontend`), execute:
 
-- Cadastro de Atleta: Usuários podem se cadastrar fornecendo dados como nome de usuário, nome completo, data de nascimento, esporte, gênero, e (opcionalmente) agência e equipe.
+```bash
+npm run build
+npm start
+```
 
-- Login: Autenticação de usuários com nome de usuário e senha.
+- **`npm run build`**: Cria uma versão otimizada do projeto para produção.
+- **`npm start`**: Inicia o servidor do frontend usando a build gerada.
 
-- Feed: Permite visualizar uma lista de publicações realizadas por determinados atletas.
+### Backend
 
-- Perfil do Atleta: Cada usuário pode visualizar e atualizar suas informações de perfil, incluindo agência e equipe.
+No diretório do backend (`sportify-backend`), execute:
 
-### 6. Tecnologias Utilizadas
+```bash
+mvn spring-boot:run
+```
 
-- Frontend:
+- **`mvn spring-boot:run`**: Compila e executa a aplicação Spring Boot localmente.
 
-  - NextJS: Framework React para construção de interfaces de usuário.
+Certifique-se de que o banco de dados esteja configurado e acessível para que o backend possa conectar-se corretamente.
+
+---
+
+## Funcionalidades:
+
+- **Cadastro de Atleta**: Usuários podem se cadastrar fornecendo dados como nome de usuário, nome completo, data de nascimento, esporte, gênero e (opcionalmente) agência e equipe.
+- **Login**: Autenticação de usuários com nome de usuário e senha.
+- **Feed**: Permite visualizar uma lista de publicações realizadas por determinados atletas.
+- **Perfil do Atleta**: Cada usuário pode visualizar e atualizar suas informações de perfil, incluindo agência e equipe.
+
+---
+
+## Tecnologias Utilizadas
+
+- **Frontend**:
+  - Next.js: Framework React para construção de interfaces de usuário.
   - Axios: Biblioteca para fazer requisições HTTP para o backend.
-  - TailwindCSS: Um framework de CSS utilitário que fornece classes pré-definidas para estilização rápida e personalizável.  
-  - ChadCN: Um conjunto de componentes pré-construídos usando TailwindCSS, projetado para agilizar o desenvolvimento de interfaces de usuário modernas.  
-  
-- Backend (Separado):
+  - TailwindCSS: Framework de CSS utilitário que fornece classes pré-definidas para estilização rápida e personalizável.
+  - ChadCN: Conjunto de componentes pré-construídos usando TailwindCSS para agilizar o desenvolvimento de interfaces modernas.
 
+- **Backend**:
   - Java e Spring Boot: Framework para construção de aplicações web em Java.
   - Banco de Dados Oracle: Sistema de banco de dados relacional para armazenar os dados dos atletas.
 
-### 7. Contribuição
+---
+
+## Contribuição
 
 Contribuições são bem-vindas! Para contribuir:
 
-- Faça um fork deste repositório.
-- Crie uma branch para sua feature ou correção (git checkout -b feature/nova-feature).
-- Commit suas mudanças (git commit -m 'Adiciona nova feature').
-- Push para a branch (git push origin feature/nova-feature).
-- Abra um Pull Request.
+1. Faça um fork deste repositório.
+2. Crie uma branch para sua feature ou correção (`git checkout -b feature/nova-feature`).
+3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`).
+4. Push para a branch (`git push origin feature/nova-feature`).
+5. Abra um Pull Request.
